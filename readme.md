@@ -28,7 +28,7 @@ highest amount for each user?
 transactions of each country?
 
 **Question 3**. Create a small flask web service with 2 rest endpoints:
-- endpoint#1: receives all the transaction fields except:
+- endpoint #1: receives all the transaction fields except:
 the transaction id, and the timestamp (you can use now())
 and saves it into a database.
 - endpoint #2: receives a user id, and return the sum of total_amount of that user.
@@ -84,7 +84,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'newUser'@'localhost';
 
 ## Solutions
 
-### First query: show the transaction with the lowest and highest amount for each user?
+### First query: show the transaction with the lowest and highest amount for each user
 
 ```SQL
 SELECT a.*
@@ -96,7 +96,7 @@ INNER JOIN (
 ) b ON a.user_id = b.user_id AND (a.total_amount = b.min_amount OR a.total_amount = b.max_amount);
 ```
 
-### Second query: show the average total_amount for all transactions of each country?
+### Second query: show the average total_amount for all transactions of each country
 
 ```SQL
 SELECT AVG(total_amount) as avg_amount, b.country
@@ -105,3 +105,6 @@ LEFT JOIN users b ON a.user_id = b.id
 GROUP BY b.country;
 ```
 
+### Flask web service implementation:
+
+Find the implementation in the [main file](https://github.com/rodolfopaganini/ripio-assesment/blob/main/main.py).
