@@ -50,8 +50,7 @@ class Transactions(Resource):
         """
 
         # Get the data to insert
-        data = request.get_json(force=True)
-        print(data)
+        data = request.get_json()
 
         # Connect to the database
         db = MySQLdb.connect(
@@ -80,8 +79,6 @@ class Transactions(Resource):
                 "{current_date}",
                 {data["user_id"]}
             )"""
-
-        print(query)
         cur.execute(query)
         db.commit()
 
